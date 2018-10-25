@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-class Solution {
+public class Solution {
     public String[] findWords(String[] words) {
         String[] str={"qwertyuiop","asdfghjkl","zxcvbnm"};
         Map<Character,Integer> map=new HashMap<>();
@@ -27,7 +27,4 @@ class Solution {
 		}
         return arr.toArray(new String[arr.size()]);
     }
-}
-	
-	
 }
