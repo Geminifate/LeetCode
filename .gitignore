@@ -1,1 +1,5 @@
-.classpath/.gitignore/.project/.prefs/.class
+.classpath
+.gitignore
+.project
+org.eclipse.jdt.core.prefs
+.class
