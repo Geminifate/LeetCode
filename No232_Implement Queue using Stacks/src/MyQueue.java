@@ -1,32 +1,53 @@
-import java.util.ArrayList;
+import java.util.Stack;
 
 public class MyQueue {
-	private ArrayList<Integer> list;
+    private Stack<Integer> stack1;
+    private Stack<Integer> stack2;
     /** Initialize your data structure here. */
     public MyQueue() {
-        list = new ArrayList();
+        stack1 = new Stack();
+        stack2 = new Stack();
     }
     
     /** Push element x to the back of queue. */
     public void push(int x) {
-        list.add(x);
+        stack1.push(x);
     }
     
     /** Removes the element from in front of queue and returns that element. */
     public int pop() {
-        int num=list.get(0);
-        list.remove(0);
+        int num=0;
+        while (stack1.size()>1) {
+			stack2.push(stack1.pop());
+		}
+        if (stack1.size()==1) {
+			num=stack1.pop();
+			while (stack2.size()>0) {
+				stack1.push(stack2.pop());
+			}
+		}
         return num;
     }
     
     /** Get the front element. */
     public int peek() {
-        return list.get(0);
+    	int num=0;
+        while (stack1.size()>1) {
+			stack2.push(stack1.pop());
+		}
+        if (stack1.size()==1) {
+        	num=stack1.peek();
+			stack2.push(stack1.pop());
+			while (stack2.size()>0) {
+				stack1.push(stack2.pop());
+			}
+		}
+        return num;
     }
     
     /** Returns whether the queue is empty. */
     public boolean empty() {
-        return list.isEmpty();
+        return stack1.isEmpty();
     }
 }
 
